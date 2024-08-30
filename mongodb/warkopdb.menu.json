@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572963"
+  },
+  "nama_menu": "Kopi",
+  "deskripsi": "tess",
+  "harga": 3000,
+  "gambar": "1.jpg",
+  "created_at": {
+    "$date": "2024-08-24T18:27:33.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572964"
+  },
+  "nama_menu": "Mie Kuah",
+  "deskripsi": "tessss",
+  "harga": 10000,
+  "gambar": "3.jpg",
+  "created_at": {
+    "$date": "2024-08-24T18:43:40.000Z"
+  }
+}]

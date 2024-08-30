@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "66cc9780d323f5c232b3e9eb"
+  },
+  "id_user": {
+    "$oid": "64f1bf2fa5c4a4e0dc572961"
+  },
+  "id_menu": {
+    "$oid": "64f1bf2fa5c4a4e0dc572964"
+  },
+  "jumlah": 1,
+  "created_at": {
+    "$date": "2024-08-26T14:56:00.519Z"
+  }
+}]

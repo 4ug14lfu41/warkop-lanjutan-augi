@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Warkop Gold Binnar 47: Tempat nongkrong dengan kopi otentik dan camilan tradisional.">
+    <meta name="keywords" content="kopi, warkop, cafe, menu, kontak, tempat nongkrong">
+    <meta name="author" content="Warkop Gold Binnar 47">
+    <title>Warkop Gold Binnar 47</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- My Style -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style2.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="navbar-logo">Warkop Gold Binnar 47</a>
+            <div class="navbar-nav">
+                <a href="#home">Home</a>
+                <a href="#about">Tentang Kami</a>
+                <a href="#menu">Menu</a>
+                <a href="#contact">Kontak</a>
+            </div>
+            <div class="navbar-extra">
+                <a href="#" id="search"><i data-feather="search"></i></a>
+                <% if (isLoggedIn) { %>
+                    <div class="profile-dropdown">
+                        <img src="/img/profile/profile.svg" alt="Profile" class="profile-img">
+                        <div class="dropdown-menu">
+                            <a href="/add-balance">Saldo Saya</a>
+                            <a href="/keranjang">Keranjang Saya</a>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <a href="/login" class="btn-login">Login</a>
+                <% } %>
+            </div>
+        </nav>
+    </header>    
+    <!-- Navbar Selesai -->
+
+    <!-- Hero Section Mulai -->
+    <section class="hero" id="home">
+        <main class="content">
+            <h1>Tempat Nongkrong Asik dengan Cita Rasa Kopi Otentik</h1>
+            <p>Tempat nongkrong santai dengan kopi khas dan camilan tradisional yang membawa kenangan masa lalu.</p>
+            <a href="#menu" class="cta">Coba Pesan Sekarang</a>
+        </main>
+    </section>
+    <!-- Hero Section Selesai -->
+
+    <!-- About Section Mulai -->
+    <section id="about" class="about">
+        <h2>Tentang Kami</h2>
+        <div class="row">
+            <div class="about-img">
+                <img src="/img/Tentang-Kami.jpg" alt="Tentang Kami - Warkop Gold Binnar 47">
+            </div>
+            <div class="content">
+                <h3>Mengapa Memilih Warkop Kami</h3>
+                <p>Warkop Gold Binnar 47 didirikan dengan semangat menyajikan kopi berkualitas dengan suasana yang ramah dan nyaman. Berawal dari ide sederhana.</p>
+                <p>Kini kami menjadi salah satu tempat favorit bagi penikmat kopi dan suasana santai.</p>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Selesai -->
+
+<!-- Menu Section Mulai -->
+<section id="menu" class="menu">
+    <h2>Menu Kami</h2>
+    <!-- <p>Kopi khas dengan cita rasa yang kuat dan aroma menggugah.</p> -->
+    <div class="row">
+        <% menus.forEach(menu => { %>
+            <div class="menu-card">
+                <img src="/img/menu/<%= menu.gambar %>" alt="<%= menu.nama_menu %>" class="menu-card-img">
+                <h3 class="menu-card-title"><%= menu.nama_menu %></h3>
+                <p class="menu-card-price">IDR <%= menu.harga %></p>
+                <p class="menu-card-description"><%= menu.deskripsi %></p>
+                <div class="quantity-controls">
+                    <button class="quantity-decrease">-</button>
+                    <input type="number" id="quantity-<%= menu.id %>" value="1" min="1" class="quantity-input">
+                    <button class="quantity-increase">+</button>
+                </div>
+                <% if (isLoggedIn) { %>
+                    <button class="add-to-cart" data-id="<%= menu.id %>" data-price="<%= menu.harga %>">Add to Cart</button>
+                    <!-- <button class="buy-now" data-id="<%= menu.id %>" data-price="<%= menu.harga %>">Buy</button> -->
+                <% } else { %>
+                    <button class="login-required">Add to Cart</button>
+                    <!-- <button class="login-required">Buy</button> -->
+                <% } %>
+            </div>
+        <% }) %>
+    </div>
+</section>
+
+
+    <!-- Contact Section Mulai -->
+    <section id="contact" class="contact">
+        <h2>Kontak Kami</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i data-feather="map-pin"></i>
+                <p>Jalan Binnar 47, Jakarta</p>
+            </div>
+            <div class="contact-item">
+                <i data-feather="phone"></i>
+                <p><a href="tel:+62123456789">+62 123 456 789</a></p>
+            </div>
+            <div class="contact-item">
+                <i data-feather="mail"></i>
+                <p><a href="mailto:info@warkopgoldbinnar47.com">info@warkopgoldbinnar47.com</a></p>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section Selesai -->
+
+    <!-- Footer Mulai -->
+    <footer>
+        <p>&copy; 2024 Warkop Gold Binnar 47. All rights reserved.</p>
+    </footer>
+    <!-- Footer Selesai -->
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script>
+        feather.replace();
+    </script>
+
+<script>
+    $(document).ready(function() {
+        // Handle add-to-cart button click
+        $('.add-to-cart').click(function() {
+            const idMenu = $(this).data('id');
+            const quantity = $(`#quantity-${idMenu}`).val();
+            $.post('/add-to-cart', { id_menu: idMenu, jumlah: quantity }, function(response) {
+                alert(response.message);
+            }).fail(function(jqXHR) {
+                alert(jqXHR.responseJSON.message);
+            });
+        });
+
+        // Handle buy-now button click
+        $('.buy-now').click(function() {
+            const idMenu = $(this).data('id');
+            const quantity = $(`#quantity-${idMenu}`).val();
+            const price = $(this).data('price');
+            const totalPrice = price * quantity;
+            
+            if (confirm(`Confirm purchase with total price IDR ${totalPrice}?`)) {
+                $.post('/buy', { id_menu: idMenu, jumlah: quantity }, function(response) {
+                    alert(response.message);
+                }).fail(function(jqXHR) {
+                    alert(jqXHR.responseJSON.message);
+                });
+            }
+        });
+
+        // Handle quantity increase and decrease
+        $('.quantity-increase').click(function() {
+            const input = $(this).siblings('.quantity-input');
+            let value = parseInt(input.val());
+            if (!isNaN(value)) {
+                input.val(value + 1);
+            }
+        });
+
+        $('.quantity-decrease').click(function() {
+            const input = $(this).siblings('.quantity-input');
+            let value = parseInt(input.val());
+            if (!isNaN(value) && value > 1) {
+                input.val(value - 1);
+            }
+        });
+
+        // Handle login-required button click
+        $('.login-required').click(function() {
+            alert('Please login first');
+        });
+    });
+</script>
+</body>
+</html>

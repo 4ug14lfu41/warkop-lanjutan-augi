@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Saya</title>
+    <!-- Tambahkan style yang sesuai atau file CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Container untuk seluruh section keranjang */
+        .keranjang {
+            margin-top: 50px;
+            padding: 60px 20px;
+            background-color: #f7f7f7;
+            min-height: 100vh;
+        }
+
+        /* Container untuk items */
+        .keranjang .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Judul section */
+        .keranjang h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Styling untuk setiap item di keranjang */
+        .keranjang-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f1f1f1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling gambar produk */
+        .keranjang-item img {
+            width: 120px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        /* Informasi produk */
+        .keranjang-info {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .keranjang-info h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .keranjang-info p {
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        /* Harga dan jumlah produk */
+        .keranjang-info .harga,
+        .keranjang-info .jumlah {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Total harga */
+        .keranjang-info .total-harga {
+            font-size: 1.2em;
+            color: #e63946;
+            margin-top: 10px;
+        }
+
+        /* Tombol aksi (hapus, checkout, dsb.) */
+        .keranjang-actions {
+            text-align: right;
+        }
+
+        .keranjang-actions button {
+            background-color: #e63946;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .keranjang-actions button:hover {
+            background-color: #d62839;
+        }
+
+        .floating-payment-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+
+    .floating-payment-button:hover {
+        background-color: #45a049;
+
+    }
+
+        /* Navbar Styling */
+        .btn-login {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+    
+        .btn-login:hover {
+            background-color: #e68900;
+        }
+    
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+    
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #ff9800;
+            transition: transform 0.3s ease;
+        }
+    
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+    
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 1000;
+            min-width: 160px;
+        }
+    
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+    
+        .dropdown-menu a:hover {
+            background-color: #555;
+        }
+    
+        .profile-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    
+        .cta {
+            background-color: #ff9800;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+    
+        .cta:hover {
+            background-color: #e68900;
+        }
+    
+        /* About Section Styling */
+        .about {
+            padding: 80px 20px;
+            background-color: #f5f5f5;
+        }
+    
+        .about h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            color: #333;
+            font-weight: bold;
+        }
+    
+        .about .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+    
+        .about-img img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+    
+        /* Menu Section Styling */
+        .menu {
+            padding: 80px 20px;
+            background-color: #f5f5f5;
+        }
+    
+        .menu h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #333;
+            font-weight: bold;
+        }
+    
+        .menu p {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 1.2em;
+            color: #666;
+        }
+    
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+    
+        .menu-card {
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 320px;
+            text-align: center;
+            padding: 20px;
+        }
+    
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        .menu-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 2px solid #ddd;
+            border-radius: 12px;
+        }
+    
+        .menu-card-title {
+            font-size: 1.6em;
+            margin: 15px 0 5px;
+            color: #333;
+            font-weight: bold;
+        }
+    
+        .menu-card-price {
+            color: #ff9800;
+            font-size: 1.4em;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+    
+        .menu-card-description {
+            font-size: 1em;
+            color: #666;
+            padding: 0 15px;
+            margin-bottom: 15px;
+        }
+    
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    
+        .quantity-controls button {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background 0.3s;
+        }
+    
+        .quantity-controls button:hover {
+            background: #2980b9;
+        }
+    
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin: 0 10px;
+            padding: 5px;
+            font-size: 1.1em;
+        }
+    
+        .add-to-cart, .buy-now {
+            background: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+    
+        .add-to-cart:hover, .buy-now:hover {
+            background: #219150;
+        }
+    
+        .buy-now {
+            background: #e74c3c;
+        }
+    
+        .buy-now:hover {
+            background: #c0392b;
+        }
+    
+        .login-required {
+            background: #95a5a6;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+    
+        .login-required:hover {
+            background: #7f8c8d;
+        }
+    
+        /* Contact Section Styling */
+        .contact {
+            padding: 80px 20px;
+            background-color: #f5f5f5;
+        }
+    
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    
+        .contact-item {
+            text-align: center;
+        }
+    
+        .contact-item i {
+            font-size: 2.5rem;
+            color: #ff9800;
+        }
+    
+        .contact-item a {
+            color: #ff9800;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+    
+        .contact-item a:hover {
+            color: #e68900;
+        }
+    
+        .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    padding-top: 50px;
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="navbar-logo">Warkop Gold Binnar 47</a>
+            <div class="navbar-nav">
+                <a href="/#home">Home</a>
+                <a href="/#about">Tentang Kami</a>
+                <a href="/#menu">Menu</a>
+                <a href="/#contact">Kontak</a>
+            </div>
+            <div class="navbar-extra">
+                <a href="#" id="search"><i data-feather="search"></i></a>
+                <% if (isLoggedIn) { %>
+                    <div class="profile-dropdown">
+                        <img src="/img/profile/profile.svg" alt="Profile" class="profile-img">
+                        <div class="dropdown-menu">
+                            <a href="/add-balance">Saldo Saya</a>
+                            <a href="/keranjang">Keranjang Saya</a>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <a href="/login" class="btn-login">Login</a>
+                <% } %>
+            </div>
+        </nav>
+    </header>    
+
+    <section class="keranjang">
+        <div class="container">
+            <h1>Keranjang Saya</h1>
+    
+            <% if (items.length > 0) { %>
+                <% items.forEach(item => { %>
+                    <div class="keranjang-item">
+                        <img src="/img/menu/<%= item.id_menu.gambar %>" alt="<%= item.id_menu.nama_menu %>">
+                        <div class="keranjang-info">
+                            <h2><%= item.id_menu.nama_menu %></h2>
+                            <p><%= item.id_menu.deskripsi %></p>
+                            <p>Jumlah: <span class="jumlah"><%= item.jumlah %></span></p>
+                            <p class="harga">Harga: Rp <%= item.id_menu.harga %></p>
+                            <p class="total-harga">Total: Rp <%= (item.id_menu.harga * item.jumlah).toLocaleString() %></p>
+                        </div>
+                        <div class="keranjang-actions">
+                            <form action="/keranjang/hapus" method="POST" class="delete-form">
+                                <input type="hidden" name="id_keranjang" value="<%= item._id %>">
+                                <button type="submit" class="delete-button">Hapus</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>Keranjang Anda kosong.</p>
+            <% } %>
+        </div>
+    
+        <!-- Floating Payment Button -->
+        <form action="/keranjang/bayar" method="POST" class="payment-form">
+            <input type="hidden" name="total_harga" value="<%= totalHarga %>">
+            <input type="hidden" id="user-saldo" value="<%= user.saldo %>">
+            <button type="submit" class="floating-payment-button">
+                <i data-feather="shopping-cart"></i>
+            </button>
+        </form>
+    </section>
+    
+    
+    <script src="/js/main.js"></script>
+    <script>
+        document.querySelector('.floating-payment-button').addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah form dari submit otomatis
+    
+            const totalHarga = parseFloat(document.querySelector('input[name="total_harga"]').value);
+            const saldo = parseFloat(document.getElementById('user-saldo').value);
+    
+            if (saldo < totalHarga) {
+                alert('Saldo Anda tidak mencukupi untuk melakukan pembayaran.');
+                return;
+            }
+    
+            const confirmPayment = confirm(`Apakah Anda yakin ingin membayar sebesar Rp ${totalHarga.toLocaleString()}?`);
+    
+            if (confirmPayment) {
+                // Jika konfirmasi, submit form
+                document.querySelector('form.payment-form').submit();
+            }
+        });
+    </script>
+    <script>
+        feather.replace();
+    </script>
+    </body>
+    </html>
+    

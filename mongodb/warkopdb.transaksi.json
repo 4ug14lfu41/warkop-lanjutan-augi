@@ -1,0 +1,66 @@
+[{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572965"
+  },
+  "id_user": {
+    "$oid": "64f1bf2fa5c4a4e0dc572960"
+  },
+  "total_harga": 10000,
+  "status": "pending",
+  "created_at": {
+    "$date": "2024-08-25T05:08:31.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572966"
+  },
+  "id_user": {
+    "$oid": "64f1bf2fa5c4a4e0dc572960"
+  },
+  "total_harga": 25000,
+  "status": "sukses",
+  "created_at": {
+    "$date": "2024-08-25T08:27:51.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572967"
+  },
+  "id_user": {
+    "$oid": "64f1bf2fa5c4a4e0dc572960"
+  },
+  "total_harga": 26000,
+  "status": "pending",
+  "created_at": {
+    "$date": "2024-08-25T08:56:18.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572968"
+  },
+  "id_user": {
+    "$oid": "64f1bf2fa5c4a4e0dc572960"
+  },
+  "total_harga": 26000,
+  "status": "sukses",
+  "created_at": {
+    "$date": "2024-08-25T09:09:34.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66cd52c12aa11a78552bb78e"
+  },
+  "id_user": {
+    "$oid": "64f1bf2fa5c4a4e0dc572960"
+  },
+  "total_harga": 91000,
+  "status": "sukses",
+  "created_at": {
+    "$date": "2024-08-27T04:14:57.113Z"
+  },
+  "__v": 0
+}]

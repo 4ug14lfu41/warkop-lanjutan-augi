@@ -1,0 +1,88 @@
+[{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572960"
+  },
+  "username": "user",
+  "email": "user@gmail.com",
+  "password": "user1234",
+  "saldo": 76000,
+  "created_at": {
+    "$date": "2024-08-25T01:55:52.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572961"
+  },
+  "username": "tommy",
+  "email": "tommy@gmail.com",
+  "password": "user1234",
+  "saldo": 2000,
+  "created_at": {
+    "$date": "2024-08-25T10:12:10.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "64f1bf2fa5c4a4e0dc572962"
+  },
+  "username": "tes",
+  "email": "tes@gmail.com",
+  "password": "1234",
+  "saldo": 0,
+  "created_at": {
+    "$date": "2024-08-25T10:13:47.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66cd1060c88158f3d2700c20"
+  },
+  "username": "tesss",
+  "email": "tesss@gmail.com",
+  "password": "12345",
+  "saldo": 0,
+  "created_at": {
+    "$date": "2024-08-26T23:31:44.664Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66cd109dc88158f3d2700c23"
+  },
+  "username": "user2",
+  "email": "user2@gmail.com",
+  "password": "12345678",
+  "saldo": 0,
+  "created_at": {
+    "$date": "2024-08-26T23:32:45.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66cd114a5eb13a7e60d408fc"
+  },
+  "username": "tesss22",
+  "email": "tes22@gmail.com",
+  "password": "12345678",
+  "saldo": 0,
+  "created_at": {
+    "$date": "2024-08-26T23:35:38.780Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66cd14777ef4de295a8ff68a"
+  },
+  "username": "tesss2",
+  "email": "tes2@gmail.com",
+  "password": "12345678",
+  "saldo": 0,
+  "created_at": {
+    "$date": "2024-08-26T23:49:11.493Z"
+  },
+  "__v": 0
+}]
